@@ -1,0 +1,32 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: ai-interview-copilot-backend
+  profiles:
+    active: sqlite
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+app:
+  jwt:
+    secret: AiInterviewCopilotEnterpriseSecretKey2026SecureHash9876543210
+    expiration-ms: 86400000
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui/index.html
+    operationsSorter: method
+
+logging:
+  level:
+    com.aicopilot: INFO
+    org.springframework.security: WARN
+    org.hibernate: WARN
