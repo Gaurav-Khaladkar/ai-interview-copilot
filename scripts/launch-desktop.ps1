@@ -14,5 +14,11 @@ if (!(Test-Path $desktopJar)) {
 Write-Host "======================================================================" -ForegroundColor Cyan
 Write-Host " Launching AI Interview Copilot Windows Desktop Client               " -ForegroundColor Cyan
 Write-Host "======================================================================" -ForegroundColor Cyan
-
-java --enable-native-access=ALL-UNNAMED -jar $desktopJar
+Push-Location $projectRoot
+try {
+    Start-Process -FilePath "javaw" -ArgumentList @("--enable-native-access=ALL-UNNAMED", "-jar", "`"$desktopJar`"") -WorkingDirectory "$projectRoot"
+    Write-Host "Desktop application launched successfully!" -ForegroundColor Green
+}
+finally {
+    Pop-Location
+}

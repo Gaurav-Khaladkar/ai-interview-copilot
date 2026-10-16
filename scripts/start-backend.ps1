@@ -22,5 +22,10 @@ Write-Host " Starting AI Interview Copilot Backend API                          
 Write-Host " Profile: $Profile | Port: $Port                                     " -ForegroundColor Cyan
 Write-Host " Swagger Docs: http://localhost:$Port/swagger-ui/index.html          " -ForegroundColor Cyan
 Write-Host "======================================================================" -ForegroundColor Cyan
-
-java -Dspring.profiles.active=$Profile -Dserver.port=$Port -jar $jarPath
+Push-Location $projectRoot
+try {
+    java "-Dspring.profiles.active=$Profile" "-Dserver.port=$Port" -jar "$jarPath"
+}
+finally {
+    Pop-Location
+}
